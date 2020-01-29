@@ -25,3 +25,14 @@ MainPage::MainPage()
 {
 	InitializeComponent();
 }
+
+
+void Khukri::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	greetingOutput->Text = "Hello, " + nameInput->Text + "!";
+}
+
+void Khukri::MainPage::SecondButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	greetingOutput->Text = "Hello, " + nameInput->Text + " from second.";
+}

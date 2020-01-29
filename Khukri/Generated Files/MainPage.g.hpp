@@ -25,8 +25,43 @@ void ::Khukri::MainPage::InitializeComponent()
 
 void ::Khukri::MainPage::Connect(int __connectionId, ::Platform::Object^ __target)
 {
-    __connectionId;         // unreferenced 
-    __target;               // unreferenced
+    switch (__connectionId)
+    {
+        case 1:
+            {
+                this->contentPanel = safe_cast<::Windows::UI::Xaml::Controls::StackPanel^>(__target);
+            }
+            break;
+        case 2:
+            {
+                this->inputPanel = safe_cast<::Windows::UI::Xaml::Controls::StackPanel^>(__target);
+            }
+            break;
+        case 3:
+            {
+                this->greetingOutput = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            }
+            break;
+        case 4:
+            {
+                this->nameInput = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
+            }
+            break;
+        case 5:
+            {
+                this->Button = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->Button))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Khukri::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::Button_Click);
+            }
+            break;
+        case 6:
+            {
+                this->SecondButton = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->SecondButton))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Khukri::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::SecondButton_Click);
+            }
+            break;
+    }
     _contentLoaded = true;
 }
 
