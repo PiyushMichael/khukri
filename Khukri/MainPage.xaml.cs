@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Threading.Tasks;
+using Windows.Storage;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -41,31 +43,29 @@ namespace Khukri
 
 		void Grid_DragOver(Object sender, DragEventArgs e)
 		{
-			/*e.AcceptedOperation = DataPackageOperation.Copy;
-			if (e.DragUIOverride)
-			{
-				e.DragUIOverride.Caption = "Parse excel sheet.. or something...";
-				e.DragUIOverride.IsContentVisible = true;
-			}
-			dragBox->Text = "Draggin";*/
+			e.AcceptedOperation = DataPackageOperation.Copy;
+			e.DragUIOverride.Caption = "Parse excel sheet.. or something...";
+			e.DragUIOverride.IsContentVisible = true;
+			dragBox.Text = "Draggin";
 		}
 
 
-		void Grid_Drop(Object sender, DragEventArgs e)
+		async void Grid_Drop(Object sender, DragEventArgs e)
 		{
-			/*if (e.DataView.Contains(StandardDataFormats.StorageItems))
+			if (e.DataView.Contains(StandardDataFormats.StorageItems))
 			{
-				// String^ items = e->DataView->GetTextAsync()->GetResults();
-				// dragBox->Text = items;
-				auto def = e->GetDeferral();
-				auto _this = this;
-				create_task(e->DataView->GetTextAsync()).then([def, _this, e])(String ^ s)
+				var items = await e.DataView.GetStorageItemsAsync();
+				if (items.Count > 0)
 				{
-					auto wsText = s->Data();
-					e->AcceptedOperation = DataPackageOperation::Copy;
-					def->Complete();
+					dragBox.Text = "Dropped";
+					//outputBox.Text = items[0].Path;
+					var t = Task.Run(() => {
+						FileStream SourceStream = File.Open(items[0].Path, FileMode.Open);
+						StreamReader streamReader = new StreamReader(SourceStream);
+						outputBox.Text = streamReader.ReadToEnd();
+					});
 				}
-			}*/
+			}
 		}
 
 

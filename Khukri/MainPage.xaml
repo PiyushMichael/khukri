@@ -37,6 +37,7 @@
             >
                 <TextBlock Text="Drop files here..." HorizontalAlignment="Center" Margin="0, 40, 0, 0"/>
             </StackPanel>
+            <TextBlock x:Name="outputBox" Margin="0, 10, 0, 10"/>
         </StackPanel>
     </Grid>
 </Page>
