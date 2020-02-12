@@ -32,12 +32,28 @@ namespace Khukri
 
 		void Button_Click(Object sender, RoutedEventArgs e)
 		{
-			greetingOutput.Text = "Hello, " + nameInput.Text + "!";
+			greetingOutput.Text = "Hello, " + nameInput.Text + " :)";
 		}
 
-		void SecondButton_Click(Object sender, RoutedEventArgs e)
+		async void SecondButton_Click(Object sender, RoutedEventArgs e)
 		{
-			greetingOutput.Text = "Hello, " + nameInput.Text + " from second.";
+			var picker = new Windows.Storage.Pickers.FileOpenPicker();
+			picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+			picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.Downloads;
+			picker.FileTypeFilter.Add("*");
+
+			Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
+			if (file != null)
+			{
+				var x = await file.OpenSequentialReadAsync();
+				var length = (uint)1024*64;
+				var str = new Windows.Storage.Streams.Buffer(length);
+				await x.ReadAsync(str, length, Windows.Storage.Streams.InputStreamOptions.ReadAhead);
+				//dragBox.Text = str.Length.ToString();
+				var dataReader = Windows.Storage.Streams.DataReader.FromBuffer(str);
+				var output = dataReader.ReadString(str.Length);
+				dragBox.Text = "Here is the file you opened :) \n\n" + output;
+			}
 		}
 
 
