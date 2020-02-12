@@ -23,8 +23,10 @@ namespace Khukri
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+	
     public sealed partial class MainPage : Page
     {
+		private List<String> urls = new List<String>();
         public MainPage()
         {
             this.InitializeComponent();
@@ -32,37 +34,30 @@ namespace Khukri
 
 		void Button_Click(Object sender, RoutedEventArgs e)
 		{
-			greetingOutput.Text = "Hello, " + nameInput.Text + " :)";
-		}
-
-		async void SecondButton_Click(Object sender, RoutedEventArgs e)
-		{
-			var picker = new Windows.Storage.Pickers.FileOpenPicker();
-			picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
-			picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.Downloads;
-			picker.FileTypeFilter.Add("*");
-
-			Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
-			if (file != null)
+			urls.Clear();
+			foreach (var item in textFields.Children)
 			{
-				var x = await file.OpenSequentialReadAsync();
-				var length = (uint)1024*64;
-				var str = new Windows.Storage.Streams.Buffer(length);
-				await x.ReadAsync(str, length, Windows.Storage.Streams.InputStreamOptions.ReadAhead);
-				//dragBox.Text = str.Length.ToString();
-				var dataReader = Windows.Storage.Streams.DataReader.FromBuffer(str);
-				var output = dataReader.ReadString(str.Length);
-				dragBox.Text = "Here is the file you opened :) \n\n" + output;
+				TextBox x = item as TextBox;
+				if (x.Text != "")
+				{
+					urls.Add(x.Text);
+				}
 			}
+			dragBox.Text = urls.Count.ToString();
 		}
 
+		void Handle_Input(Object sender, RoutedEventArgs e)
+		{
+			dragBox.Text = e.ToString();
+		}
+
+		delegate void HandleInput(Object sender, RoutedEventArgs e);
 
 		void Grid_DragOver(Object sender, DragEventArgs e)
 		{
 			e.AcceptedOperation = DataPackageOperation.Copy;
-			e.DragUIOverride.Caption = "Parse excel sheet.. or something...";
+			e.DragUIOverride.Caption = "Drop keyword spreadsheet here.";
 			e.DragUIOverride.IsContentVisible = true;
-			dragBox.Text = "Draggin";
 		}
 
 
@@ -73,7 +68,6 @@ namespace Khukri
 				var items = await e.DataView.GetStorageItemsAsync();
 				if (items.Count > 0)
 				{
-					dragBox.Text = "Dropped";
 					StorageFile file = items[0] as StorageFile;
 					if (file != null)
 					{
@@ -98,7 +92,22 @@ namespace Khukri
 
 		void Grid_DragLeave(Object sender, DragEventArgs e)
 		{
-			dragBox.Text = "Awww... don't go.";
+			// dragBox.Text = "Awww... don't go.";
+		}
+
+		void Add_Click(object sender, RoutedEventArgs e)
+		{
+			TextBox field = new TextBox();
+			field.Width = 200;
+			field.PlaceholderText = "paste link...";
+			field.HorizontalAlignment = HorizontalAlignment.Left;
+			field.Margin = new Thickness(0, 10, 0, 0);
+			textFields.Children.Add(field);
+		}
+
+		private void Subtract_Click(object sender, RoutedEventArgs e)
+		{
+			if (textFields.Children.Count > 0) textFields.Children.RemoveAt(textFields.Children.Count - 1);
 		}
 	}
 }
