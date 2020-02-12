@@ -1,0 +1,6 @@
+MainPackage=C:\Users\Michael\git\Khukri\Khukri\bin\x64\Debug\Khukri_1.0.0.0_x64_Debug.appx
+SymbolPackage=C:\Users\Michael\git\Khukri\Khukri\obj\x64\Debug\Symbols\Khukri_1.0.0.0_x64_Debug.appxsym
+ResourcePack=C:\Users\Michael\git\Khukri\Khukri\bin\x64\Debug\Khukri_1.0.0.0_scale-100.appx
+ResourcePack=C:\Users\Michael\git\Khukri\Khukri\bin\x64\Debug\Khukri_1.0.0.0_scale-125.appx
+ResourcePack=C:\Users\Michael\git\Khukri\Khukri\bin\x64\Debug\Khukri_1.0.0.0_scale-150.appx
+ResourcePack=C:\Users\Michael\git\Khukri\Khukri\bin\x64\Debug\Khukri_1.0.0.0_scale-400.appx

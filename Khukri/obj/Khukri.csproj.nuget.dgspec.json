@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Michael\\git\\khukri\\Khukri\\Khukri.csproj": {}
+    "C:\\Users\\Michael\\git\\Khukri\\Khukri\\Khukri.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Michael\\git\\khukri\\Khukri\\Khukri.csproj": {
+    "C:\\Users\\Michael\\git\\Khukri\\Khukri\\Khukri.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Michael\\git\\khukri\\Khukri\\Khukri.csproj",
+        "projectUniqueName": "C:\\Users\\Michael\\git\\Khukri\\Khukri\\Khukri.csproj",
         "projectName": "Khukri",
-        "projectPath": "C:\\Users\\Michael\\git\\khukri\\Khukri\\Khukri.csproj",
+        "projectPath": "C:\\Users\\Michael\\git\\Khukri\\Khukri\\Khukri.csproj",
         "packagesPath": "C:\\Users\\Michael\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Michael\\git\\khukri\\Khukri\\obj\\",
+        "outputPath": "C:\\Users\\Michael\\git\\Khukri\\Khukri\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
