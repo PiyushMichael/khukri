@@ -74,12 +74,23 @@ namespace Khukri
 				if (items.Count > 0)
 				{
 					dragBox.Text = "Dropped";
-					//outputBox.Text = items[0].Path;
-					var t = Task.Run(() => {
-						FileStream SourceStream = File.Open(items[0].Path, FileMode.Open);
-						StreamReader streamReader = new StreamReader(SourceStream);
-						outputBox.Text = streamReader.ReadToEnd();
-					});
+					StorageFile file = items[0] as StorageFile;
+					if (file != null)
+					{
+						if (items[0].Path.Contains(".csv")) {
+							var x = await file.OpenSequentialReadAsync();
+							var length = (uint)1024 * 64;
+							var str = new Windows.Storage.Streams.Buffer(length);
+							await x.ReadAsync(str, length, Windows.Storage.Streams.InputStreamOptions.ReadAhead);
+							var dataReader = Windows.Storage.Streams.DataReader.FromBuffer(str);
+							var output = dataReader.ReadString(str.Length);
+							dragBox.Text = "Here is the file you opened :) \n\n" + output;
+						} else {
+							var messageDialog = new Windows.UI.Popups.MessageDialog("Invalid file type. Only drop .csv files.");
+							await messageDialog.ShowAsync();
+						}
+						
+					}
 				}
 			}
 		}
