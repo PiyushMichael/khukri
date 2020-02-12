@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="ce8d9acf-33a7-4e80-a32a-b2464a3e1ec5"
+    Name="05f11f5e-e9d5-45ad-8def-37c2d7a490b0"
     Publisher="CN=Michael"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="ce8d9acf-33a7-4e80-a32a-b2464a3e1ec5" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="05f11f5e-e9d5-45ad-8def-37c2d7a490b0" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Khukri</DisplayName>
