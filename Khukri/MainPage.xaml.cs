@@ -27,14 +27,21 @@ namespace Khukri
     public sealed partial class MainPage : Page
     {
 		private List<String> urls = new List<String>();
-        public MainPage()
+		private List<String> Articles = new List<String>();
+		private Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
+
+
+		public MainPage()
         {
             this.InitializeComponent();
         }
 
-		void Button_Click(Object sender, RoutedEventArgs e)
+		async void Button_Click(Object sender, RoutedEventArgs e)
 		{
+			contentPanel.Visibility = Visibility.Collapsed;
+			Loader1.Visibility = Visibility.Visible;
 			urls.Clear();
+			Articles.Clear();
 			foreach (var item in textFields.Children)
 			{
 				TextBox x = item as TextBox;
@@ -43,7 +50,22 @@ namespace Khukri
 					urls.Add(x.Text);
 				}
 			}
-			dragBox.Text = urls.Count.ToString();
+
+			foreach (var url in urls)
+			{
+				try
+				{
+					Uri requestUri = new Uri(url);
+					var response = await httpClient.GetAsync(requestUri);
+					var text = await response.Content.ReadAsStringAsync();
+					Articles.Add(text.ToLower());
+				}
+				catch (Exception) {}
+			}
+
+			contentPanel.Visibility = Visibility.Visible;
+			Loader1.Visibility = Visibility.Collapsed;
+			dragBox.Text = urls.Count.ToString() + ' ' + Articles.Count.ToString();
 		}
 
 		void Handle_Input(Object sender, RoutedEventArgs e)
