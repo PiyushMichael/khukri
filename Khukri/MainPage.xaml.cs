@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Threading.Tasks;
 using Windows.Storage;
+using System.Text.RegularExpressions;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -29,6 +30,7 @@ namespace Khukri
 		private List<String> urls = new List<String>();
 		private List<String> Articles = new List<String>();
 		private List<List<string>> parsedResult = new List<List<string>>();
+		private List<List<int>> searchMatrix = new List<List<int>>();
 		private Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
 
 
@@ -90,6 +92,7 @@ namespace Khukri
 
 		void GenerateKeywords(string text, List<List<string>> results)
 		{
+			results.Clear();
 			var records = text.Split('\n');
 			foreach (var record in records)
 			{
@@ -122,20 +125,22 @@ namespace Khukri
 
 		void KeywordAnalysis()
 		{
+			searchMatrix.Clear();
 			foreach (var entry in parsedResult)
 			{
 				var keyword = entry[0];
 				var maxSearches = entry[4];
 				var competition = entry[6];
 				var bidding = entry[8];
-				var line = keyword + " | " + maxSearches + " | " + competition + " | " + bidding + '\n';
-				/*var line = "";
-				for (int i = 0; i < entry.Count; i++)
+				List<int> counts = new List<int>();
+				foreach (var article in Articles)
 				{
-					line += entry[i] + " | ";
+					dragBox.Text += keyword + ": " + Regex.Matches(article, keyword).Count.ToString() + '\n';
+					counts.Add(Regex.Matches(article, keyword).Count);
 				}
-				line += "|\n";*/
-				dragBox.Text += line;
+				searchMatrix.Add(counts);
+				//var line = keyword + " | " + maxSearches + " | " + competition + " | " + bidding + '\n';
+				//dragBox.Text += line;
 			}
 		}
 
