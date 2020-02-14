@@ -28,7 +28,7 @@
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Paste your article here" Margin="20,40,0,0"/>
                     <RichEditBox x:Name="richTextBox" Grid.Row="1" Grid.Column="0" Width="600" Height="280" HorizontalAlignment="Left" Margin="20,0,0,0" />
                     <Button Grid.Row="1" Grid.Column="1" x:Name="Run" Content="Run" Click="Run_Click" Margin="10,0,0,0"/>
-                    <TextBlock x:Name="dragBox"/>
+                    <TextBlock x:Name="dragBox" Grid.Row="5" Grid.Column="0"/>
                     <StackPanel
                         Grid.Row="2"
                         Grid.Column="0"
