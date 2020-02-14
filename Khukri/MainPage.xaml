@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     RequestedTheme="Default"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    
     <Pivot x:Name="rootPivot" Title="SEO toolkit">
         <PivotItem Header="Competitor Analysis" BorderBrush="Black">
             <ScrollViewer>
@@ -26,8 +26,8 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Paste your article here" Margin="20,40,0,0"/>
-                    <RichEditBox Grid.Row="1" Grid.Column="0" x:Name="nameInput" Width="600" Height="280" HorizontalAlignment="Left" Margin="20,0,0,0" />
-                    <Button Grid.Row="1" Grid.Column="1" x:Name="Button" Content="Run" Click="Button_Click" Margin="10,0,0,0"/>
+                    <RichEditBox x:Name="richTextBox" Grid.Row="1" Grid.Column="0" Width="600" Height="280" HorizontalAlignment="Left" Margin="20,0,0,0" />
+                    <Button Grid.Row="1" Grid.Column="1" x:Name="Run" Content="Run" Click="Run_Click" Margin="10,0,0,0"/>
                     <TextBlock x:Name="dragBox"/>
                     <StackPanel
                         Grid.Row="2"
@@ -43,16 +43,16 @@
                         HorizontalAlignment="Center"
                         Margin="20,0,0,0"
                     >
-                        <TextBlock Text="Drop files here..." HorizontalAlignment="Center" Margin="0, 70, 0, 0"/>
+                        <TextBlock x:Name="dropText" FontSize="24" Text="Drop files here..." HorizontalAlignment="Center" Margin="0, 64, 0, 0"/>
                     </StackPanel>
                     <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal">
                         <TextBlock Text="Add URLs to competitors articles" HorizontalAlignment="Center" Margin="0, 20, 0, 0"/>
-                        <Button Content="+" Margin="160, 0, 0, 0" Click="Add_Click"/>
-                        <Button Content="-" Margin="5, 0, 0, 0" Click="Subtract_Click"/>
+                        <Button x:Name="plusButton" Content="+" Margin="160, 0, 0, 0" Click="Add_Click"/>
+                        <Button x:Name="minusButton" Content="-" Margin="5, 0, 0, 0" Click="Subtract_Click"/>
                     </StackPanel>
                     <StackPanel Grid.Row="5" Grid.Column="0" x:Name="textFields" Margin="0, 20, 0, 0"></StackPanel>
                     <TextBlock x:Name="outputBox" Margin="0,10,1633,10" Grid.ColumnSpan="2"/>
-                    <ProgressRing IsActive="True" Width="80" Height="80" x:Name="Loader1" Visibility="Collapsed"/>
+                    <ProgressRing Grid.Row="2" Grid.Column="0" IsActive="True" Width="80" Height="80" x:Name="Loader1" Visibility="Collapsed"/>
                 </Grid>
             </ScrollViewer>
         </PivotItem>

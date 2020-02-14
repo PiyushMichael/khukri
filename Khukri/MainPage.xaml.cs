@@ -38,9 +38,10 @@ namespace Khukri
 			Windows.UI.ViewManagement.ApplicationView.PreferredLaunchWindowingMode = Windows.UI.ViewManagement.ApplicationViewWindowingMode.PreferredLaunchViewSize;
 		}
 
-		async void Button_Click(Object sender, RoutedEventArgs e)
+		async void Run_Click(Object sender, RoutedEventArgs e)
 		{
-			//contentPanel.Visibility = Visibility.Collapsed;
+			richTextBox.IsEnabled = Run.IsEnabled = plusButton.IsEnabled = minusButton.IsEnabled = false;
+			dropText.Text = "Working...";
 			Loader1.Visibility = Visibility.Visible;
 			urls.Clear();
 			Articles.Clear();
@@ -65,7 +66,8 @@ namespace Khukri
 				catch (Exception) {}
 			}
 
-			//contentPanel.Visibility = Visibility.Visible;
+			richTextBox.IsEnabled = Run.IsEnabled = plusButton.IsEnabled = minusButton.IsEnabled = true;
+			dropText.Text = "Drop files here...";
 			Loader1.Visibility = Visibility.Collapsed;
 			dragBox.Text = urls.Count.ToString() + ' ' + Articles.Count.ToString();
 		}
