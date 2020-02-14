@@ -34,11 +34,14 @@ namespace Khukri
 		public MainPage()
         {
             this.InitializeComponent();
-        }
+			Windows.UI.ViewManagement.ApplicationView.PreferredLaunchViewSize = new Size(768,800);
+			Windows.UI.ViewManagement.ApplicationView.PreferredLaunchWindowingMode = Windows.UI.ViewManagement.ApplicationViewWindowingMode.PreferredLaunchViewSize;
+		}
 
-		async void Button_Click(Object sender, RoutedEventArgs e)
+		async void Run_Click(Object sender, RoutedEventArgs e)
 		{
-			contentPanel.Visibility = Visibility.Collapsed;
+			richTextBox.IsEnabled = Run.IsEnabled = plusButton.IsEnabled = minusButton.IsEnabled = false;
+			dropText.Text = "Working...";
 			Loader1.Visibility = Visibility.Visible;
 			urls.Clear();
 			Articles.Clear();
@@ -63,7 +66,8 @@ namespace Khukri
 				catch (Exception) {}
 			}
 
-			contentPanel.Visibility = Visibility.Visible;
+			richTextBox.IsEnabled = Run.IsEnabled = plusButton.IsEnabled = minusButton.IsEnabled = true;
+			dropText.Text = "Drop files here...";
 			Loader1.Visibility = Visibility.Collapsed;
 			dragBox.Text = urls.Count.ToString() + ' ' + Articles.Count.ToString();
 		}
@@ -123,7 +127,7 @@ namespace Khukri
 			field.Width = 200;
 			field.PlaceholderText = "paste link...";
 			field.HorizontalAlignment = HorizontalAlignment.Left;
-			field.Margin = new Thickness(0, 10, 0, 0);
+			field.Margin = new Thickness(0, 0, 0, 10);
 			textFields.Children.Add(field);
 		}
 
