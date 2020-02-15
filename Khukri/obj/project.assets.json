@@ -27999,11 +27999,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Michael\\git\\Khukri\\Khukri\\Khukri.csproj",
+      "projectUniqueName": "C:\\Users\\Michael\\git\\khukri\\Khukri\\Khukri.csproj",
       "projectName": "Khukri",
-      "projectPath": "C:\\Users\\Michael\\git\\Khukri\\Khukri\\Khukri.csproj",
+      "projectPath": "C:\\Users\\Michael\\git\\khukri\\Khukri\\Khukri.csproj",
       "packagesPath": "C:\\Users\\Michael\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Michael\\git\\Khukri\\Khukri\\obj\\",
+      "outputPath": "C:\\Users\\Michael\\git\\khukri\\Khukri\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
