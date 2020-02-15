@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Navigation;
 using System.Threading.Tasks;
 using Windows.Storage;
 using System.Text.RegularExpressions;
+using Windows.ApplicationModel.Core;
+using Windows.UI.ViewManagement;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -40,7 +42,7 @@ namespace Khukri
 		public MainPage()
         {
             this.InitializeComponent();
-			Windows.UI.ViewManagement.ApplicationView.PreferredLaunchViewSize = new Size(768,800);
+			Windows.UI.ViewManagement.ApplicationView.PreferredLaunchViewSize = new Size(710,740);
 			Windows.UI.ViewManagement.ApplicationView.PreferredLaunchWindowingMode = Windows.UI.ViewManagement.ApplicationViewWindowingMode.PreferredLaunchViewSize;
 		}
 
@@ -80,11 +82,26 @@ namespace Khukri
 				dropText.Text = "Drop files here...";
 				Loader1.Visibility = Visibility.Collapsed;
 				KeywordAnalysis();
+				rootPivot.SelectedItem = reportPivot;
 			} else
 			{
 				var messageDialog = new Windows.UI.Popups.MessageDialog("Add csv file of keywords first");
 				await messageDialog.ShowAsync();
 			}
+		}
+
+		async void newGraphWindow()
+		{
+			var currentAV = ApplicationView.GetForCurrentView();
+			var newWindow = Window.Current;
+			var newAppView = ApplicationView.GetForCurrentView();
+			newAppView.Title = "Keywords Report";
+			var frame = new Frame();
+			frame.Navigate(typeof(MainPage), null);
+
+			newWindow.Content = frame;
+			newWindow.Activate();
+			await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newAppView.Id, ViewSizePreference.UseMinimum, currentAV.Id, ViewSizePreference.UseMinimum);
 		}
 
 		void Handle_Input(Object sender, RoutedEventArgs e)
@@ -204,16 +221,21 @@ namespace Khukri
 		void Add_Click(object sender, RoutedEventArgs e)
 		{
 			TextBox field = new TextBox();
-			field.Width = 200;
+			field.Width = 400;
 			field.PlaceholderText = "paste link...";
 			field.HorizontalAlignment = HorizontalAlignment.Left;
-			field.Margin = new Thickness(0, 0, 0, 10);
+			field.Margin = new Thickness(20, 0, 0, 10);
 			textFields.Children.Add(field);
 		}
 
 		private void Subtract_Click(object sender, RoutedEventArgs e)
 		{
 			if (textFields.Children.Count > 0) textFields.Children.RemoveAt(textFields.Children.Count - 1);
+		}
+
+		private void Back_Click(object sender, RoutedEventArgs e)
+		{
+			rootPivot.SelectedItem = keywordPivot;
 		}
 	}
 }
