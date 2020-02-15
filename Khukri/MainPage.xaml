@@ -7,10 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     RequestedTheme="Default"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    SizeChanged="Page_SizeChanged">
     
     <Pivot x:Name="rootPivot" Title="SEO toolkit">
-        <PivotItem x:Name="keywordPivot" Header="Competitor Analysis" BorderBrush="Black">
+        <PivotItem x:Name="keywordPivot" Header="Keyword Analysis" BorderBrush="Black">
             <ScrollViewer>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -50,12 +51,12 @@
                             <TextBlock x:Name="dropText" FontSize="24" Text="Drop files here..." HorizontalAlignment="Center" Margin="0, 64, 0, 0"/>
                         </StackPanel>
                         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-                            <Button x:Name="Run" Content="Run" Click="Run_Click" Margin="166,40,0,0" FontSize="20" FontWeight="SemiBold"/>
+                            <Button x:Name="Run" Content="Run" Click="Run_Click" Margin="166,40,0,0" FontSize="20" FontWeight="SemiBold" />
                             <StackPanel Margin="0,50,0,0" Orientation="Horizontal">
                                 <Button x:Name="plusButton" Content="+" Margin="160, 0, 0, 0" Click="Add_Click"/>
                                 <Button x:Name="minusButton" Content="-" Margin="5, 0, 0, 0" Click="Subtract_Click"/>
                             </StackPanel>
-                            <TextBlock Text="Add/Remove artile URLs" HorizontalAlignment="Right" Margin="0,0,20,0"/>
+                            <TextBlock Text="Add/Remove article URLs" HorizontalAlignment="Right" Margin="0,0,20,0"/>
                         </StackPanel>
                     </Grid>
                     <StackPanel Grid.Row="3" Grid.Column="0" x:Name="textFields" Margin="0, 20, 0, 0">
@@ -66,108 +67,21 @@
                 </Grid>
             </ScrollViewer>
         </PivotItem>
-        <PivotItem x:Name="reportPivot" Header="Reports">
+        <PivotItem Header="Meta Tags Analysis">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80*" />
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Button Grid.Column="0" Grid.Row="0" Content='🡰' Margin="20,0,0,0" Click="Back_Click" FontSize="24">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background"  Value="{ThemeResource ButtonBackground}" />
-                            <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
-                            <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
-                            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}" />
-                            <Setter Property="Padding" Value="8,4,8,4" />
-                            <Setter Property="HorizontalAlignment" Value="Left" />
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
-                            <Setter Property="FontWeight" Value="Normal" />
-                            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
-                            <Setter Property="UseSystemFocusVisuals"  Value="True" />
-                            <Setter Property="FocusVisualMargin" Value="-3" />
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Button">
-                                        <Grid x:Name="RootGrid" Background="{TemplateBinding Background}"  CornerRadius="100,100,100,100">
-                                            <VisualStateManager.VisualStateGroups>
-                                                <VisualStateGroup x:Name="CommonStates">
-                                                    <VisualState x:Name="Normal">
-                                                        <Storyboard>
-                                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
-                                                        </Storyboard>
-                                                    </VisualState>
-                                                    <VisualState x:Name="PointerOver">
-                                                        <Storyboard>
-                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
-                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPointerOver}" />
-                                                            </ObjectAnimationUsingKeyFrames>
-                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"  Storyboard.TargetName="ContentPresenter">
-                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPointerOver}" />
-                                                            </ObjectAnimationUsingKeyFrames>
-                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}" />
-                                                            </ObjectAnimationUsingKeyFrames>
-                                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
-                                                        </Storyboard>
-                                                    </VisualState>
-                                                    <VisualState x:Name="Pressed">
-                                                        <Storyboard>
-                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
-                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPressed}" />
-                                                            </ObjectAnimationUsingKeyFrames>
-                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
-                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}" />
-                                                            </ObjectAnimationUsingKeyFrames>
-                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}" />
-                                                            </ObjectAnimationUsingKeyFrames>
-                                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid" />
-                                                        </Storyboard>
-                                                    </VisualState>
-                                                    <VisualState x:Name="Disabled">
-                                                        <Storyboard>
-                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
-                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}" />
-                                                            </ObjectAnimationUsingKeyFrames>
-                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
-                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}" />
-                                                            </ObjectAnimationUsingKeyFrames>
-                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}" />
-                                                            </ObjectAnimationUsingKeyFrames>
-                                                        </Storyboard>
-                                                    </VisualState>
-                                                </VisualStateGroup>
-                                            </VisualStateManager.VisualStateGroups>
-
-                                            <ContentPresenter x:Name="ContentPresenter"
-                                                AutomationProperties.AccessibilityView="Raw"
-                                                BorderBrush="{TemplateBinding BorderBrush}"
-                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                ContentTransitions="{TemplateBinding ContentTransitions}"
-                                                Content="{TemplateBinding Content}"
-                                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                Padding="{TemplateBinding Padding}"
-                                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                CornerRadius="100,100,100,100"
-                                            />
-                                        </Grid>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Button.Style>
-                </Button>
-                <StackPanel x:Name="reportsField" Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-                    <TextBlock Text="Reports will appear after you run tests..." FontSize="30"/>
-                </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="26*" />
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="255*"/>
+                <ColumnDefinition Width="316*" />
+                <ColumnDefinition Width="316*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="Coming soon..." FontSize="36"/>
             </Grid>
         </PivotItem>
         <PivotItem Header="Keyword Search">

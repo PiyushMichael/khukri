@@ -48,7 +48,16 @@ namespace Khukri
 
 		async void Run_Click(Object sender, RoutedEventArgs e)
 		{
-			if (parsedResult.Count != 0)
+			foreach (var item in textFields.Children)
+			{
+				TextBox x = item as TextBox;
+				if (x.Text != "")
+				{
+					urls.Add(x.Text);
+				}
+			}
+
+			if (parsedResult.Count != 0 && urls.Count != 0)
 			{
 				richTextBox.IsEnabled = Run.IsEnabled = plusButton.IsEnabled = minusButton.IsEnabled = false;
 				dropText.Text = "Working...";
@@ -57,14 +66,6 @@ namespace Khukri
 				Articles.Clear();
 				richTextBox.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string rtb);
 				Articles.Add(rtb.ToLower());
-				foreach (var item in textFields.Children)
-				{
-					TextBox x = item as TextBox;
-					if (x.Text != "")
-					{
-						urls.Add(x.Text);
-					}
-				}
 
 				foreach (var url in urls)
 				{
@@ -82,10 +83,12 @@ namespace Khukri
 				dropText.Text = "Drop files here...";
 				Loader1.Visibility = Visibility.Collapsed;
 				KeywordAnalysis();
-				rootPivot.SelectedItem = reportPivot;
+				this.Frame.Navigate(typeof(BlankPage1), searchMatrix);
 			} else
 			{
-				var messageDialog = new Windows.UI.Popups.MessageDialog("Add csv file of keywords first");
+				var message = "Add csv file of keywords first";
+				if (urls.Count == 0) message = "Add competitior URLs first";
+				var messageDialog = new Windows.UI.Popups.MessageDialog(message);
 				await messageDialog.ShowAsync();
 			}
 		}
@@ -233,9 +236,9 @@ namespace Khukri
 			if (textFields.Children.Count > 0) textFields.Children.RemoveAt(textFields.Children.Count - 1);
 		}
 
-		private void Back_Click(object sender, RoutedEventArgs e)
+		private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
 		{
-			rootPivot.SelectedItem = keywordPivot;
+			richTextBox.Width = e.NewSize.Width - 60;
 		}
 	}
 }
