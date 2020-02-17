@@ -48,6 +48,7 @@ namespace Khukri
 
 		async void Run_Click(Object sender, RoutedEventArgs e)
 		{
+			urls.Clear();
 			foreach (var item in textFields.Children)
 			{
 				TextBox x = item as TextBox;
@@ -62,10 +63,10 @@ namespace Khukri
 				richTextBox.IsEnabled = Run.IsEnabled = plusButton.IsEnabled = minusButton.IsEnabled = false;
 				dropText.Text = "Working...";
 				Loader1.Visibility = Visibility.Visible;
-				urls.Clear();
 				Articles.Clear();
 				richTextBox.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string rtb);
 				Articles.Add(rtb.ToLower());
+				int i = 1;
 
 				foreach (var url in urls)
 				{
@@ -75,6 +76,7 @@ namespace Khukri
 						var response = await httpClient.GetAsync(requestUri);
 						var text = await response.Content.ReadAsStringAsync();
 						Articles.Add(Regex.Replace(text.ToLower(), "<.*?>", ""));
+						i++;
 					}
 					catch (Exception) { }
 				}
@@ -83,7 +85,7 @@ namespace Khukri
 				dropText.Text = "Drop files here...";
 				Loader1.Visibility = Visibility.Collapsed;
 				KeywordAnalysis();
-				this.Frame.Navigate(typeof(BlankPage1), searchMatrix);
+				this.Frame.Navigate(typeof(KeywordReport), searchMatrix);
 			} else
 			{
 				var message = "Add csv file of keywords first";
@@ -91,20 +93,6 @@ namespace Khukri
 				var messageDialog = new Windows.UI.Popups.MessageDialog(message);
 				await messageDialog.ShowAsync();
 			}
-		}
-
-		async void newGraphWindow()
-		{
-			var currentAV = ApplicationView.GetForCurrentView();
-			var newWindow = Window.Current;
-			var newAppView = ApplicationView.GetForCurrentView();
-			newAppView.Title = "Keywords Report";
-			var frame = new Frame();
-			frame.Navigate(typeof(MainPage), null);
-
-			newWindow.Content = frame;
-			newWindow.Activate();
-			await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newAppView.Id, ViewSizePreference.UseMinimum, currentAV.Id, ViewSizePreference.UseMinimum);
 		}
 
 		void Handle_Input(Object sender, RoutedEventArgs e)
