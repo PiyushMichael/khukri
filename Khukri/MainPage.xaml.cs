@@ -44,6 +44,7 @@ namespace Khukri
             this.InitializeComponent();
 			Windows.UI.ViewManagement.ApplicationView.PreferredLaunchViewSize = new Size(710,740);
 			Windows.UI.ViewManagement.ApplicationView.PreferredLaunchWindowingMode = Windows.UI.ViewManagement.ApplicationViewWindowingMode.PreferredLaunchViewSize;
+			this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 		}
 
 		async void Run_Click(Object sender, RoutedEventArgs e)
@@ -162,12 +163,12 @@ namespace Khukri
 				searchMatrix.Add(counts);
 			}
 
-			foreach (var searchRow in searchMatrix)
+			/*foreach (var searchRow in searchMatrix)
 			{
 				max.Add(searchRow.Max());
 				min.Add(searchRow.Min());
 				avg.Add(Convert.ToInt32(searchRow.Average()));
-			}
+			}*/
 		}
 
 		async void Grid_Drop(Object sender, DragEventArgs e)

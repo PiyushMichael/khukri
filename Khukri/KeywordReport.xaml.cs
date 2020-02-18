@@ -1,9 +1,12 @@
 ﻿using Microsoft.Toolkit.Uwp.UI.Controls;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -23,72 +26,117 @@ namespace Khukri
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
 
-    public class Department
-    {
-        public int DepartmentId { get; set; }
-        public string DepartmentName { get; set; }
-    }
-
-    public class Person
-    {
-        public int PersonId { get; set; }
-        public int DepartmentId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Position { get; set; }
-    }
-
 
     public sealed partial class KeywordReport : Page
     {
         public List<List<int>> searchMatrix;
-        public List<Department> Departments { get; set; }
-        public List<Person> Persons { get; set; }
+        private List<int> max = new List<int>();
+        private List<int> min = new List<int>();
+        private List<int> avg = new List<int>();
+        public List<ExpandoObject> Personses;
 
         public KeywordReport()
         {
             this.InitializeComponent();
-
-            Departments = new List<Department>
-            {
-                new Department {DepartmentId = 1, DepartmentName = "R&D"},
-                new Department {DepartmentId = 2, DepartmentName = "Finance"},
-                new Department {DepartmentId = 3, DepartmentName = "IT"}
-            };
-
-            Persons = new List<Person>
-            {
-                new Person
-                {
-                    PersonId = 1, DepartmentId = 3, FirstName = "Ronald", LastName = "Rumple",
-                    Position = "Network Administrator"
-                },
-                new Person
-                {
-                    PersonId = 2, DepartmentId = 1, FirstName = "Brett", LastName = "Banner",
-                    Position = "Software Developer"
-                },
-                new Person
-                {
-                    PersonId = 3, DepartmentId = 2, FirstName = "Alice", LastName = "Anderson",
-                    Position = "Accountant"
-                }
-            };
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //navResult.Text = e.Parameter.ToString();
             searchMatrix = e.Parameter as List<List<int>>;
-            foreach (var search in searchMatrix)
-            {
-                outputBox.Text += search.Count.ToString() + ", ";
-            }
+            minMaxAvg();
+            DrawTable();
+            outputBox.Text += searchMatrix.Last().Count.ToString() + ", " + min.Count.ToString() + ", " + max.Count.ToString() + ", " + avg.Count.ToString();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
+        }
+
+        void minMaxAvg()
+        {
+            max.Clear();
+            min.Clear();
+            avg.Clear();
+
+            foreach (var searchRow in searchMatrix)
+            {
+                max.Add(searchRow.Max());
+                min.Add(searchRow.Min());
+                avg.Add(Convert.ToInt32(searchRow.Average()));
+            }
+        }
+
+        void DrawTable()
+        {
+            TextBlock text;
+            StackPanel stack;
+
+            stack = new StackPanel();
+            stack.Orientation = Orientation.Horizontal;
+            stack.HorizontalAlignment = HorizontalAlignment.Left;
+
+            text = new TextBlock();
+            text.Text = "Own Article";
+            text.Width = 80;
+            stack.Children.Add(text); 
+            
+            for (int i = 1; i < searchMatrix.Last().Count; i++)
+            {
+                text = new TextBlock();
+                text.Text = "Article " + i;
+                text.Width = 80;
+                stack.Children.Add(text);
+            }
+
+            text = new TextBlock();
+            text.Text = "Min";
+            text.Width = 80;
+            stack.Children.Add(text);
+
+            text = new TextBlock();
+            text.Text = "Max";
+            text.Width = 80;
+            stack.Children.Add(text);
+
+            text = new TextBlock();
+            text.Text = "Avg";
+            text.Width = 80;
+            stack.Children.Add(text);
+
+            tableStack.Children.Add(stack);
+
+            int records = searchMatrix.Count < 20 ? searchMatrix.Count : 20;
+            for (int i = 0; i < records; i++)
+            {
+                stack = new StackPanel();
+                stack.Orientation = Orientation.Horizontal;
+                stack.HorizontalAlignment = HorizontalAlignment.Left;
+
+                foreach (var entry in searchMatrix[i]) {
+                    text = new TextBlock();
+                    text.Text = entry.ToString();
+                    text.Width = 80;
+                    stack.Children.Add(text);
+                }
+
+                text = new TextBlock();
+                text.Text = min[i].ToString();
+                text.Width = 80;
+                stack.Children.Add(text);
+
+                text = new TextBlock();
+                text.Text = max[i].ToString();
+                text.Width = 80;
+                stack.Children.Add(text);
+
+                text = new TextBlock();
+                text.Text = avg[i].ToString();
+                text.Width = 80;
+                stack.Children.Add(text);
+
+                tableStack.Children.Add(stack);
+            }
         }
     }
 }

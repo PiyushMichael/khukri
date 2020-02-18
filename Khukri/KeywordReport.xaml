@@ -108,15 +108,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <controls:DataGrid
-            Grid.Row="1"
-            Grid.Column="0"
-            x:Name="dataGrid"
-            Height="600" Margin="12"
-            AutoGenerateColumns="True"
-            ItemsSource="{x:Bind Persons}"
-        >
-        </controls:DataGrid>
+        <StackPanel Grid.Row="1" Grid.Column="1" x:Name="tableStack" Orientation="Vertical" HorizontalAlignment="Left"></StackPanel>
         <TextBlock Grid.Row="2" Grid.Column="0" x:Name="outputBox" />
     </Grid>
 </Page>
