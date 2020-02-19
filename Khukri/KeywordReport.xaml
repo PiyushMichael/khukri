@@ -11,12 +11,10 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80*" />
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Button Grid.Column="0" Grid.Row="0" Content='🡰' Margin="20,0,0,0" Click="Back_Click" FontSize="24">
@@ -108,7 +106,6 @@
                 </Style>
             </Button.Style>
         </Button>
-        <StackPanel Grid.Row="1" Grid.Column="1" x:Name="tableStack" Orientation="Vertical" HorizontalAlignment="Left"></StackPanel>
-        <TextBlock Grid.Row="2" Grid.Column="0" x:Name="outputBox" />
+        <StackPanel Grid.Row="1" Grid.Column="0" x:Name="tableStack" Orientation="Vertical" HorizontalAlignment="Left" Margin="20,0,0,0"></StackPanel>
     </Grid>
 </Page>

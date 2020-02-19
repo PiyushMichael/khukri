@@ -23,16 +23,35 @@ using Windows.UI.ViewManagement;
 
 namespace Khukri
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-	
-    public sealed partial class MainPage : Page
+	/// <summary>
+	/// An empty page that can be used on its own or navigated to within a Frame.
+	/// </summary>
+
+	public class KeywordCount
+	{
+		public string keyword { get; set; }
+		public string maxSearches { get; set; }
+		public string competition { get; set; }
+		public string maxBidding { get; set; }
+		public List<int> counts { get; set; }
+		public int Min { get; set; }
+		public int Max { get; set; }
+		public int Avg { get; set; }
+
+		public void CalculateAggregates()
+		{
+			Min = counts.Min();
+			Max = counts.Max();
+			Avg = Convert.ToInt32(counts.Average());
+		}
+	}
+
+	public sealed partial class MainPage : Page
     {
 		private List<String> urls = new List<String>();
 		private List<String> Articles = new List<String>();
 		private List<List<string>> parsedResult = new List<List<string>>();
-		private List<List<int>> searchMatrix = new List<List<int>>();
+		private List<KeywordCount> searchMatrix = new List<KeywordCount>();
 		private List<int> max = new List<int>();
 		private List<int> min = new List<int>();
 		private List<int> avg = new List<int>();
@@ -96,11 +115,6 @@ namespace Khukri
 			}
 		}
 
-		void Handle_Input(Object sender, RoutedEventArgs e)
-		{
-			dragBox.Text = e.ToString();
-		}
-
 		delegate void HandleInput(Object sender, RoutedEventArgs e);
 
 		void Grid_DragOver(Object sender, DragEventArgs e)
@@ -114,6 +128,8 @@ namespace Khukri
 		{
 			results.Clear();
 			var records = text.Split('\n');
+			var keywordMarker = false;
+
 			foreach (var record in records)
 			{
 				var fields = record.Split(',');
@@ -137,7 +153,8 @@ namespace Khukri
 						recordItem.Add(field);
 					}
 				}
-				results.Add(recordItem);
+				if (keywordMarker) results.Add(recordItem);
+				if (recordItem.First() == "Keyword") keywordMarker = true;
 			}
 			dragBox.Text = "Records: " + results.Count.ToString() + '\n';
 		}
@@ -160,15 +177,16 @@ namespace Khukri
 				{
 					counts.Add(Regex.Matches(article, keyword).Count);
 				}
-				searchMatrix.Add(counts);
-			}
 
-			/*foreach (var searchRow in searchMatrix)
-			{
-				max.Add(searchRow.Max());
-				min.Add(searchRow.Min());
-				avg.Add(Convert.ToInt32(searchRow.Average()));
-			}*/
+				var search = new KeywordCount();
+				search.keyword = keyword;
+				search.maxSearches = maxSearches;
+				search.maxBidding = bidding;
+				search.competition = competition;
+				search.counts = counts;
+				search.CalculateAggregates();
+				searchMatrix.Add(search);
+			}
 		}
 
 		async void Grid_Drop(Object sender, DragEventArgs e)

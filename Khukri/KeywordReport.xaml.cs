@@ -24,12 +24,11 @@ namespace Khukri
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-
+    /// </summary>  
 
     public sealed partial class KeywordReport : Page
     {
-        public List<List<int>> searchMatrix;
+        public List<KeywordCount> searchMatrix;
         private List<int> max = new List<int>();
         private List<int> min = new List<int>();
         private List<int> avg = new List<int>();
@@ -42,29 +41,15 @@ namespace Khukri
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            searchMatrix = e.Parameter as List<List<int>>;
-            minMaxAvg();
+            searchMatrix = e.Parameter as List<KeywordCount>;
+            //minMaxAvg();
             DrawTable();
-            outputBox.Text += searchMatrix.Last().Count.ToString() + ", " + min.Count.ToString() + ", " + max.Count.ToString() + ", " + avg.Count.ToString();
+            //outputBox.Text += searchMatrix.Last().counts.Count.ToString() + ", " + min.Count.ToString() + ", " + max.Count.ToString() + ", " + avg.Count.ToString();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
-        }
-
-        void minMaxAvg()
-        {
-            max.Clear();
-            min.Clear();
-            avg.Clear();
-
-            foreach (var searchRow in searchMatrix)
-            {
-                max.Add(searchRow.Max());
-                min.Add(searchRow.Min());
-                avg.Add(Convert.ToInt32(searchRow.Average()));
-            }
         }
 
         void DrawTable()
@@ -77,11 +62,26 @@ namespace Khukri
             stack.HorizontalAlignment = HorizontalAlignment.Left;
 
             text = new TextBlock();
+            text.Text = "Keywords";
+            text.Width = 160;
+            stack.Children.Add(text);
+
+            text = new TextBlock();
+            text.Text = "Density";
+            text.Width = 70;
+            stack.Children.Add(text);
+
+            text = new TextBlock();
+            text.Text = "Compt.";
+            text.Width = 70;
+            stack.Children.Add(text);
+
+            text = new TextBlock();
             text.Text = "Own Article";
-            text.Width = 80;
-            stack.Children.Add(text); 
-            
-            for (int i = 1; i < searchMatrix.Last().Count; i++)
+            text.Width = 90;
+            stack.Children.Add(text);
+
+            for (int i = 1; i < searchMatrix.Last().counts.Count; i++)
             {
                 text = new TextBlock();
                 text.Text = "Article " + i;
@@ -113,25 +113,42 @@ namespace Khukri
                 stack.Orientation = Orientation.Horizontal;
                 stack.HorizontalAlignment = HorizontalAlignment.Left;
 
-                foreach (var entry in searchMatrix[i]) {
+                text = new TextBlock();
+                text.Text = searchMatrix[i].keyword;
+                text.Width = 160;
+                stack.Children.Add(text);
+
+                text = new TextBlock();
+                text.Text = searchMatrix[i].maxSearches;
+                text.Width = 70;
+                stack.Children.Add(text);
+
+                text = new TextBlock();
+                text.Text = searchMatrix[i].competition;
+                text.Width = 70;
+                stack.Children.Add(text);
+
+                int articleIndex = 0;
+                foreach (var entry in searchMatrix[i].counts) {
                     text = new TextBlock();
                     text.Text = entry.ToString();
-                    text.Width = 80;
+                    text.Width = articleIndex == 0 ? 90 : 80;
                     stack.Children.Add(text);
+                    articleIndex++;
                 }
 
                 text = new TextBlock();
-                text.Text = min[i].ToString();
+                text.Text = searchMatrix[i].Min.ToString();
                 text.Width = 80;
                 stack.Children.Add(text);
 
                 text = new TextBlock();
-                text.Text = max[i].ToString();
+                text.Text = searchMatrix[i].Max.ToString();
                 text.Width = 80;
                 stack.Children.Add(text);
 
                 text = new TextBlock();
-                text.Text = avg[i].ToString();
+                text.Text = searchMatrix[i].Avg.ToString();
                 text.Width = 80;
                 stack.Children.Add(text);
 
