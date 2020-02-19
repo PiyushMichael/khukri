@@ -10,6 +10,8 @@ using System.Reflection.Emit;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -60,21 +62,25 @@ namespace Khukri
             text = new TextBlock();
             text.Text = "Keywords";
             text.Width = 160;
+            text.FontWeight = FontWeights.SemiBold;
             stack.Children.Add(text);
 
             text = new TextBlock();
             text.Text = "Density";
             text.Width = 70;
+            text.FontWeight = FontWeights.SemiBold;
             stack.Children.Add(text);
 
             text = new TextBlock();
             text.Text = "Compt.";
             text.Width = 70;
+            text.FontWeight = FontWeights.SemiBold;
             stack.Children.Add(text);
 
             text = new TextBlock();
             text.Text = "Own Article";
             text.Width = 90;
+            text.FontWeight = FontWeights.SemiBold;
             stack.Children.Add(text);
 
             for (int i = 1; i < searchMatrix.Last().counts.Count; i++)
@@ -82,22 +88,26 @@ namespace Khukri
                 text = new TextBlock();
                 text.Text = "Article " + i;
                 text.Width = 80;
+                text.FontWeight = FontWeights.SemiBold;
                 stack.Children.Add(text);
             }
 
             text = new TextBlock();
             text.Text = "Min";
             text.Width = 80;
+            text.FontWeight = FontWeights.SemiBold;
             stack.Children.Add(text);
 
             text = new TextBlock();
             text.Text = "Max";
             text.Width = 80;
+            text.FontWeight = FontWeights.SemiBold;
             stack.Children.Add(text);
 
             text = new TextBlock();
             text.Text = "Avg";
             text.Width = 80;
+            text.FontWeight = FontWeights.SemiBold;
             stack.Children.Add(text);
 
             tableStack.Children.Add(stack);
@@ -128,7 +138,17 @@ namespace Khukri
                 foreach (var entry in searchMatrix[i].counts) {
                     text = new TextBlock();
                     text.Text = entry.ToString();
-                    text.Width = articleIndex == 0 ? 90 : 80;
+                    if (articleIndex == 0)
+                    {
+                        text.Width = 90;
+                        if (entry <= searchMatrix[i].Min || entry >= searchMatrix[i].Avg)
+                        {
+                            text.Foreground = new SolidColorBrush(Colors.Red);
+                        }
+                    } else
+                    {
+                        text.Width = 80;
+                    }
                     stack.Children.Add(text);
                     articleIndex++;
                 }
