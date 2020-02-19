@@ -16,21 +16,42 @@ using Windows.UI.Xaml.Navigation;
 using System.Threading.Tasks;
 using Windows.Storage;
 using System.Text.RegularExpressions;
+using Windows.ApplicationModel.Core;
+using Windows.UI.ViewManagement;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace Khukri
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-	
-    public sealed partial class MainPage : Page
+	/// <summary>
+	/// An empty page that can be used on its own or navigated to within a Frame.
+	/// </summary>
+
+	public class KeywordCount
+	{
+		public string keyword { get; set; }
+		public string maxSearches { get; set; }
+		public string competition { get; set; }
+		public string maxBidding { get; set; }
+		public List<int> counts { get; set; }
+		public int Min { get; set; }
+		public int Max { get; set; }
+		public int Avg { get; set; }
+
+		public void CalculateAggregates()
+		{
+			Min = counts.Min();
+			Max = counts.Max();
+			Avg = Convert.ToInt32(counts.Average());
+		}
+	}
+
+	public sealed partial class MainPage : Page
     {
 		private List<String> urls = new List<String>();
 		private List<String> Articles = new List<String>();
 		private List<List<string>> parsedResult = new List<List<string>>();
-		private List<List<int>> searchMatrix = new List<List<int>>();
+		private List<KeywordCount> searchMatrix = new List<KeywordCount>();
 		private List<int> max = new List<int>();
 		private List<int> min = new List<int>();
 		private List<int> avg = new List<int>();
@@ -40,29 +61,32 @@ namespace Khukri
 		public MainPage()
         {
             this.InitializeComponent();
-			Windows.UI.ViewManagement.ApplicationView.PreferredLaunchViewSize = new Size(768,800);
+			Windows.UI.ViewManagement.ApplicationView.PreferredLaunchViewSize = new Size(710,740);
 			Windows.UI.ViewManagement.ApplicationView.PreferredLaunchWindowingMode = Windows.UI.ViewManagement.ApplicationViewWindowingMode.PreferredLaunchViewSize;
+			this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 		}
 
 		async void Run_Click(Object sender, RoutedEventArgs e)
 		{
-			if (parsedResult.Count != 0)
+			urls.Clear();
+			foreach (var item in textFields.Children)
+			{
+				TextBox x = item as TextBox;
+				if (x.Text != "")
+				{
+					urls.Add(x.Text);
+				}
+			}
+
+			if (parsedResult.Count != 0 && urls.Count != 0)
 			{
 				richTextBox.IsEnabled = Run.IsEnabled = plusButton.IsEnabled = minusButton.IsEnabled = false;
 				dropText.Text = "Working...";
 				Loader1.Visibility = Visibility.Visible;
-				urls.Clear();
 				Articles.Clear();
 				richTextBox.Document.GetText(Windows.UI.Text.TextGetOptions.None, out string rtb);
 				Articles.Add(rtb.ToLower());
-				foreach (var item in textFields.Children)
-				{
-					TextBox x = item as TextBox;
-					if (x.Text != "")
-					{
-						urls.Add(x.Text);
-					}
-				}
+				int i = 1;
 
 				foreach (var url in urls)
 				{
@@ -72,6 +96,7 @@ namespace Khukri
 						var response = await httpClient.GetAsync(requestUri);
 						var text = await response.Content.ReadAsStringAsync();
 						Articles.Add(Regex.Replace(text.ToLower(), "<.*?>", ""));
+						i++;
 					}
 					catch (Exception) { }
 				}
@@ -80,16 +105,14 @@ namespace Khukri
 				dropText.Text = "Drop files here...";
 				Loader1.Visibility = Visibility.Collapsed;
 				KeywordAnalysis();
+				this.Frame.Navigate(typeof(KeywordReport), searchMatrix);
 			} else
 			{
-				var messageDialog = new Windows.UI.Popups.MessageDialog("Add csv file of keywords first");
+				var message = "Add csv file of keywords first";
+				if (urls.Count == 0) message = "Add competitior URLs first";
+				var messageDialog = new Windows.UI.Popups.MessageDialog(message);
 				await messageDialog.ShowAsync();
 			}
-		}
-
-		void Handle_Input(Object sender, RoutedEventArgs e)
-		{
-			dragBox.Text = e.ToString();
 		}
 
 		delegate void HandleInput(Object sender, RoutedEventArgs e);
@@ -105,6 +128,8 @@ namespace Khukri
 		{
 			results.Clear();
 			var records = text.Split('\n');
+			var keywordMarker = false;
+
 			foreach (var record in records)
 			{
 				var fields = record.Split(',');
@@ -128,7 +153,8 @@ namespace Khukri
 						recordItem.Add(field);
 					}
 				}
-				results.Add(recordItem);
+				if (keywordMarker) results.Add(recordItem);
+				if (recordItem.First() == "Keyword") keywordMarker = true;
 			}
 			dragBox.Text = "Records: " + results.Count.ToString() + '\n';
 		}
@@ -151,14 +177,15 @@ namespace Khukri
 				{
 					counts.Add(Regex.Matches(article, keyword).Count);
 				}
-				searchMatrix.Add(counts);
-			}
 
-			foreach (var searchRow in searchMatrix)
-			{
-				max.Add(searchRow.Max());
-				min.Add(searchRow.Min());
-				avg.Add(Convert.ToInt32(searchRow.Average()));
+				var search = new KeywordCount();
+				search.keyword = keyword;
+				search.maxSearches = maxSearches;
+				search.maxBidding = bidding;
+				search.competition = competition;
+				search.counts = counts;
+				search.CalculateAggregates();
+				searchMatrix.Add(search);
 			}
 		}
 
@@ -204,16 +231,21 @@ namespace Khukri
 		void Add_Click(object sender, RoutedEventArgs e)
 		{
 			TextBox field = new TextBox();
-			field.Width = 200;
+			field.Width = 400;
 			field.PlaceholderText = "paste link...";
 			field.HorizontalAlignment = HorizontalAlignment.Left;
-			field.Margin = new Thickness(0, 0, 0, 10);
+			field.Margin = new Thickness(20, 0, 0, 10);
 			textFields.Children.Add(field);
 		}
 
 		private void Subtract_Click(object sender, RoutedEventArgs e)
 		{
 			if (textFields.Children.Count > 0) textFields.Children.RemoveAt(textFields.Children.Count - 1);
+		}
+
+		private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+		{
+			richTextBox.Width = e.NewSize.Width - 60;
 		}
 	}
 }

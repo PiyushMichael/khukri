@@ -7,73 +7,84 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     RequestedTheme="Default"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    SizeChanged="Page_SizeChanged">
     
     <Pivot x:Name="rootPivot" Title="SEO toolkit">
-        <PivotItem Header="Competitor Analysis" BorderBrush="Black">
+        <PivotItem x:Name="keywordPivot" Header="Keyword Analysis" BorderBrush="Black">
             <ScrollViewer>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="80"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
+                        <RowDefinition Height="46" />
                         <RowDefinition Height="300" />
                         <RowDefinition Height="200" />
-                        <RowDefinition Height="20" />
-                        <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Paste your article here" Margin="20,40,0,0"/>
-                    <RichEditBox x:Name="richTextBox" Grid.Row="1" Grid.Column="0" Width="600" Height="280" HorizontalAlignment="Left" Margin="20,0,0,0" />
-                    <Button Grid.Row="1" Grid.Column="1" x:Name="Run" Content="Run" Click="Run_Click" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Paste your article here:" Margin="20,20,0,0" FontSize="20" FontWeight="SemiBold"/>
+                    <RichEditBox x:Name="richTextBox" Grid.Row="1" Grid.Column="0" Width="640" Height="280" HorizontalAlignment="Left" Margin="20,0,0,0" />
                     <TextBlock x:Name="dragBox" Grid.Row="5" Grid.Column="0"/>
-                    <StackPanel
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        AllowDrop="True"
-                        DragOver="Grid_DragOver"
-                        Drop="Grid_Drop"
-                        DragLeave="Grid_DragLeave"
-                        Background="DarkGray"
-                        Width="400"
-                        Height="160"
-                        CornerRadius="20"
-                        HorizontalAlignment="Center"
-                        Margin="20,0,0,0"
-                    >
-                        <TextBlock x:Name="dropText" FontSize="24" Text="Drop files here..." HorizontalAlignment="Center" Margin="0, 64, 0, 0"/>
+                    <Grid Grid.Row="2" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="240"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200" />
+                        </Grid.RowDefinitions>
+                        <StackPanel
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            AllowDrop="True"
+                            DragOver="Grid_DragOver"
+                            Drop="Grid_Drop"
+                            DragLeave="Grid_DragLeave"
+                            Background="DarkGray"
+                            Width="400"
+                            Height="160"
+                            CornerRadius="20"
+                            HorizontalAlignment="Center"
+                            Margin="20,0,0,0"
+                        >
+                            <TextBlock x:Name="dropText" FontSize="24" Text="Drop files here..." HorizontalAlignment="Center" Margin="0, 64, 0, 0"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                            <Button x:Name="Run" Content="Run" Click="Run_Click" Margin="166,40,0,0" FontSize="20" FontWeight="SemiBold" />
+                            <StackPanel Margin="0,50,0,0" Orientation="Horizontal">
+                                <Button x:Name="plusButton" Content="+" Margin="160, 0, 0, 0" Click="Add_Click"/>
+                                <Button x:Name="minusButton" Content="-" Margin="5, 0, 0, 0" Click="Subtract_Click"/>
+                            </StackPanel>
+                            <TextBlock Text="Add/Remove article URLs" HorizontalAlignment="Right" Margin="0,0,20,0"/>
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Grid.Row="3" Grid.Column="0" x:Name="textFields" Margin="0, 20, 0, 0">
+                        <TextBox PlaceholderText="paste link..." Width="400" HorizontalAlignment="Left" Margin="20,0,0,10"></TextBox>
                     </StackPanel>
-                    <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal">
-                        <TextBlock Text="Add URLs to competitors articles" HorizontalAlignment="Center" Margin="0, 20, 0, 0"/>
-                        <Button x:Name="plusButton" Content="+" Margin="160, 0, 0, 0" Click="Add_Click"/>
-                        <Button x:Name="minusButton" Content="-" Margin="5, 0, 0, 0" Click="Subtract_Click"/>
-                    </StackPanel>
-                    <StackPanel Grid.Row="5" Grid.Column="0" x:Name="textFields" Margin="0, 20, 0, 0"></StackPanel>
                     <TextBlock x:Name="outputBox" Margin="0,10,1633,10" Grid.ColumnSpan="2"/>
                     <ProgressRing Grid.Row="2" Grid.Column="0" IsActive="True" Width="80" Height="80" x:Name="Loader1" Visibility="Collapsed"/>
                 </Grid>
             </ScrollViewer>
         </PivotItem>
-        <PivotItem Header="Keyword Search">
+        <PivotItem Header="Meta Tags Analysis">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="33*" />
-                    <ColumnDefinition Width="8*"/>
-                    <ColumnDefinition Width="275*"/>
-                    <ColumnDefinition Width="316*" />
-                    <ColumnDefinition Width="316*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="1" Grid.Column="3" Text="Coming soon..." FontSize="36"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="26*" />
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="255*"/>
+                <ColumnDefinition Width="316*" />
+                <ColumnDefinition Width="316*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="Coming soon..." FontSize="36"/>
             </Grid>
         </PivotItem>
-        <PivotItem Header="Additional Features">
+        <PivotItem Header="Keyword Search">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="26*" />
