@@ -29,10 +29,7 @@ namespace Khukri
     public sealed partial class KeywordReport : Page
     {
         public List<KeywordCount> searchMatrix;
-        private List<int> max = new List<int>();
-        private List<int> min = new List<int>();
-        private List<int> avg = new List<int>();
-        public List<ExpandoObject> Personses;
+        public int recordCount = 20;
 
         public KeywordReport()
         {
@@ -42,9 +39,7 @@ namespace Khukri
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             searchMatrix = e.Parameter as List<KeywordCount>;
-            //minMaxAvg();
             DrawTable();
-            //outputBox.Text += searchMatrix.Last().counts.Count.ToString() + ", " + min.Count.ToString() + ", " + max.Count.ToString() + ", " + avg.Count.ToString();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -56,6 +51,7 @@ namespace Khukri
         {
             TextBlock text;
             StackPanel stack;
+            tableStack.Children.Clear();
 
             stack = new StackPanel();
             stack.Orientation = Orientation.Horizontal;
@@ -106,7 +102,7 @@ namespace Khukri
 
             tableStack.Children.Add(stack);
 
-            int records = searchMatrix.Count < 20 ? searchMatrix.Count : 20;
+            int records = searchMatrix.Count < recordCount ? searchMatrix.Count : recordCount;
             for (int i = 0; i < records; i++)
             {
                 stack = new StackPanel();
@@ -153,6 +149,20 @@ namespace Khukri
                 stack.Children.Add(text);
 
                 tableStack.Children.Add(stack);
+            }
+        }
+
+        private async void Show_Click(object sender, RoutedEventArgs e)
+        {
+           try
+            {
+                recordCount = Convert.ToInt32(recordCountPicker.Text);
+                DrawTable();
+            }
+            catch(Exception)
+            {
+                var messageDialog = new Windows.UI.Popups.MessageDialog("Record Count must be an integer");
+                await messageDialog.ShowAsync();
             }
         }
     }
