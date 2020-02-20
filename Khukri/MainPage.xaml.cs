@@ -241,6 +241,8 @@ namespace Khukri
 		private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
 		{
 			richTextBox.Width = e.NewSize.Width - 60;
+			richTextBox.Height = e.NewSize.Height - 460;
+			mainGrid.RowDefinitions[1].Height = new GridLength(e.NewSize.Height - 440);
 		}
 	}
 }
