@@ -113,10 +113,10 @@
                 <TextBlock Grid.Row="2" Grid.Column="0" Margin="20,20,20,0" TextWrapping="Wrap">
                     You can extract keywords CSV from <Hyperlink NavigateUri="https://ads.google.com/intl/en_in/home/tools/keyword-planner/">Google Keywords Planner</Hyperlink>.
                     But before going off clicking buttons haphazardly <Hyperlink NavigateUri="https://ahrefs.com/blog/google-keyword-planner/">read this guide</Hyperlink> to learn how to access
-                    it for free. After you download the keywords spreadsheet, save it as a separate MS-DOS compatible CSV file - which will show as a "Save as Format" option.
+                    it for free. After you download the keywords spreadsheet, save it as a separate MS-DOS compatible CSV file - which will show in the "Save as Format" options.
                 </TextBlock>
                 <TextBlock Grid.Row="3" Grid.Column="0" Margin="20,20,20,0" TextWrapping="Wrap">
-                    <Hyperlink NavigateUri="https://www.thehoth.com/google-keyword-planner/">Hoth</Hyperlink> is another free keywords analysis tool which we hope to integrate into this tool in the future.
+                    <Hyperlink NavigateUri="https://www.thehoth.com/google-keyword-planner/">Hoth</Hyperlink> is another free keywords analysis system which we hope to integrate into this tool in the future.
                 </TextBlock>
                 <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,20,40" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom">©There is no copyright</TextBlock>
             </Grid>

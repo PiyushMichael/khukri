@@ -40,10 +40,6 @@
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
               "version": "[6.2.9, )"
-            },
-            "System.Reflection.Emit": {
-              "target": "Package",
-              "version": "[4.7.0, )"
             }
           },
           "imports": [
