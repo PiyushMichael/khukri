@@ -9,7 +9,7 @@
   <Identity
     Name="05f11f5e-e9d5-45ad-8def-37c2d7a490b0"
     Publisher="CN=Piyush Michael"
-    Version="1.0.0.0" />
+    Version="1.1.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="05f11f5e-e9d5-45ad-8def-37c2d7a490b0" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
