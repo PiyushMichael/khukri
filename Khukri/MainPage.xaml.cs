@@ -40,9 +40,10 @@ namespace Khukri
 
 		public void CalculateAggregates()
 		{
-			Min = counts.Min();
-			Max = counts.Max();
-			Avg = Convert.ToInt32(counts.Average());
+			List<int> countsExcept1st = (counts.ToArray()).Skip(1).ToList();
+			Min = countsExcept1st.Min();
+			Max = countsExcept1st.Max();
+			Avg = Convert.ToInt32(countsExcept1st.Average());
 		}
 	}
 
@@ -52,9 +53,6 @@ namespace Khukri
 		private List<String> Articles = new List<String>();
 		private List<List<string>> parsedResult = new List<List<string>>();
 		private List<KeywordCount> searchMatrix = new List<KeywordCount>();
-		private List<int> max = new List<int>();
-		private List<int> min = new List<int>();
-		private List<int> avg = new List<int>();
 		private Windows.Web.Http.HttpClient httpClient = new Windows.Web.Http.HttpClient();
 
 
@@ -156,15 +154,12 @@ namespace Khukri
 				if (keywordMarker) results.Add(recordItem);
 				if (recordItem.First() == "Keyword") keywordMarker = true;
 			}
-			dragBox.Text = "Records: " + results.Count.ToString() + '\n';
+			dragBox.Text = results.Count.ToString() + " keywords added";
 		}
 
 		void KeywordAnalysis()
 		{
 			searchMatrix.Clear();
-			max.Clear();
-			min.Clear();
-			avg.Clear();
 
 			foreach (var entry in parsedResult)
 			{
