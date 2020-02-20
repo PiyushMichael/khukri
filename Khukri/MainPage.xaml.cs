@@ -40,9 +40,10 @@ namespace Khukri
 
 		public void CalculateAggregates()
 		{
-			Min = counts.Min();
-			Max = counts.Max();
-			Avg = Convert.ToInt32(counts.Average());
+			List<int> countsExcept1st = (counts.ToArray()).Skip(1).ToList();
+			Min = countsExcept1st.Min();
+			Max = countsExcept1st.Max();
+			Avg = Convert.ToInt32(countsExcept1st.Average());
 		}
 	}
 
