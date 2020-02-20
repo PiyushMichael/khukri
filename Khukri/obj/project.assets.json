@@ -203,15 +203,6 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        }
-      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -314,39 +305,6 @@
         "build": {
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
-        }
-      },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.Emit.ILGeneration": "4.7.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.Reflection.Emit.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/aot/lib/netcore50/System.Reflection.Emit.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          }
-        }
-      },
-      "System.Reflection.Emit.ILGeneration/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.ILGeneration.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.Reflection.Emit.ILGeneration.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/aot/lib/netcore50/System.Reflection.Emit.ILGeneration.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          }
         }
       }
     },
@@ -551,15 +509,6 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
-        }
-      },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -843,27 +792,6 @@
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
         }
-      },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.Emit.ILGeneration": "4.7.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.Reflection.Emit.dll": {}
-        }
-      },
-      "System.Reflection.Emit.ILGeneration/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.ILGeneration.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.Reflection.Emit.ILGeneration.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0.16299/win10-arm-aot": {
@@ -1067,15 +995,6 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
-        }
-      },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -1360,27 +1279,6 @@
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
         }
-      },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.Emit.ILGeneration": "4.7.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.Reflection.Emit.dll": {}
-        }
-      },
-      "System.Reflection.Emit.ILGeneration/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.ILGeneration.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.Reflection.Emit.ILGeneration.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0.16299/win10-arm64-aot": {
@@ -1584,15 +1482,6 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
-        }
-      },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -1877,27 +1766,6 @@
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
         }
-      },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.Emit.ILGeneration": "4.7.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.Reflection.Emit.dll": {}
-        }
-      },
-      "System.Reflection.Emit.ILGeneration/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.ILGeneration.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.Reflection.Emit.ILGeneration.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0.16299/win10-x64": {
@@ -2101,15 +1969,6 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
-        }
-      },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -2393,27 +2252,6 @@
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
         }
-      },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.Emit.ILGeneration": "4.7.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.Reflection.Emit.dll": {}
-        }
-      },
-      "System.Reflection.Emit.ILGeneration/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.ILGeneration.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.Reflection.Emit.ILGeneration.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0.16299/win10-x64-aot": {
@@ -2617,15 +2455,6 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
-        }
-      },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -2910,27 +2739,6 @@
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
         }
-      },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.Emit.ILGeneration": "4.7.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.Reflection.Emit.dll": {}
-        }
-      },
-      "System.Reflection.Emit.ILGeneration/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.ILGeneration.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.Reflection.Emit.ILGeneration.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0.16299/win10-x86": {
@@ -3134,15 +2942,6 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
-        }
-      },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -3426,27 +3225,6 @@
         "native": {
           "runtimes/win10-x86/nativeassets/uap10.0.15138/clrcompression.dll": {}
         }
-      },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.Emit.ILGeneration": "4.7.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.Reflection.Emit.dll": {}
-        }
-      },
-      "System.Reflection.Emit.ILGeneration/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.ILGeneration.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.Reflection.Emit.ILGeneration.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0.16299/win10-x86-aot": {
@@ -3650,15 +3428,6 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
-        }
-      },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -3942,27 +3711,6 @@
         "build": {
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
-        }
-      },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.Emit.ILGeneration": "4.7.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.Reflection.Emit.dll": {}
-        }
-      },
-      "System.Reflection.Emit.ILGeneration/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Reflection.Emit.ILGeneration.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.Reflection.Emit.ILGeneration.dll": {}
         }
       }
     }
@@ -4347,27 +4095,6 @@
         "ref/uap10.0.15138/mscorlib.dll",
         "ref/uap10.0.15138/netstandard.dll",
         "runtime.json"
-      ]
-    },
-    "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-      "sha512": "4rQ928QrHtNAM2+k55md15MfbZJOnHzVVBcPSQUhEZ0KU0WEImPiIbrnh7lRXKkI5ZwmXZZJiJrEUoW5kAgAUQ==",
-      "type": "package",
-      "path": "microsoft.toolkit.uwp.ui.controls.datagrid/6.0.0",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/uap10.0.16299/Design/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.Design.dll",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.pdb",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.pri",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.xml",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/DataGrid/DataGrid.xaml",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.xr.xml",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/Themes/Generic.xaml",
-        "microsoft.toolkit.uwp.ui.controls.datagrid.6.0.0.nupkg.sha512",
-        "microsoft.toolkit.uwp.ui.controls.datagrid.nuspec",
-        "tools/VisualStudioToolsManifest.xml"
       ]
     },
     "NETStandard.Library/2.0.3": {
@@ -8416,125 +8143,11 @@
         "runtimes/win10-x86/lib/uap10.0.15138/netstandard.dll",
         "runtimes/win10-x86/nativeassets/uap10.0.15138/clrcompression.dll"
       ]
-    },
-    "System.Reflection.Emit/4.7.0": {
-      "sha512": "VR4kk8XLKebQ4MZuKuIni/7oh+QGFmZW3qORd1GvBq/8026OpW501SzT/oypwiQl4TvT8ErnReh/NzY9u+C6wQ==",
-      "type": "package",
-      "path": "system.reflection.emit/4.7.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/System.Reflection.Emit.dll",
-        "lib/netcoreapp2.0/_._",
-        "lib/netstandard1.1/System.Reflection.Emit.dll",
-        "lib/netstandard1.1/System.Reflection.Emit.xml",
-        "lib/netstandard1.3/System.Reflection.Emit.dll",
-        "lib/netstandard2.0/System.Reflection.Emit.dll",
-        "lib/netstandard2.0/System.Reflection.Emit.xml",
-        "lib/netstandard2.1/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcoreapp2.0/_._",
-        "ref/netstandard1.1/System.Reflection.Emit.dll",
-        "ref/netstandard1.1/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/de/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/es/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/fr/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/it/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/ja/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/ko/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/ru/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/zh-hans/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/zh-hant/System.Reflection.Emit.xml",
-        "ref/netstandard2.0/System.Reflection.Emit.dll",
-        "ref/netstandard2.0/System.Reflection.Emit.xml",
-        "ref/netstandard2.1/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/aot/lib/netcore50/System.Reflection.Emit.dll",
-        "runtimes/aot/lib/netcore50/System.Reflection.Emit.xml",
-        "system.reflection.emit.4.7.0.nupkg.sha512",
-        "system.reflection.emit.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "System.Reflection.Emit.ILGeneration/4.7.0": {
-      "sha512": "AucBYo3DSI0IDxdUjKksBcQJXPHyoPyrCXYURW1WDsLI4M65Ar/goSHjdnHOAY9MiYDNKqDlIgaYm+zL2hA1KA==",
-      "type": "package",
-      "path": "system.reflection.emit.ilgeneration/4.7.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/System.Reflection.Emit.ILGeneration.dll",
-        "lib/netcoreapp2.0/_._",
-        "lib/netstandard1.0/System.Reflection.Emit.ILGeneration.dll",
-        "lib/netstandard1.0/System.Reflection.Emit.ILGeneration.xml",
-        "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll",
-        "lib/netstandard2.0/System.Reflection.Emit.ILGeneration.dll",
-        "lib/netstandard2.0/System.Reflection.Emit.ILGeneration.xml",
-        "lib/netstandard2.1/_._",
-        "lib/portable-net45+wp8/_._",
-        "lib/wp80/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcoreapp2.0/_._",
-        "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll",
-        "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.xml",
-        "ref/netstandard1.0/de/System.Reflection.Emit.ILGeneration.xml",
-        "ref/netstandard1.0/es/System.Reflection.Emit.ILGeneration.xml",
-        "ref/netstandard1.0/fr/System.Reflection.Emit.ILGeneration.xml",
-        "ref/netstandard1.0/it/System.Reflection.Emit.ILGeneration.xml",
-        "ref/netstandard1.0/ja/System.Reflection.Emit.ILGeneration.xml",
-        "ref/netstandard1.0/ko/System.Reflection.Emit.ILGeneration.xml",
-        "ref/netstandard1.0/ru/System.Reflection.Emit.ILGeneration.xml",
-        "ref/netstandard1.0/zh-hans/System.Reflection.Emit.ILGeneration.xml",
-        "ref/netstandard1.0/zh-hant/System.Reflection.Emit.ILGeneration.xml",
-        "ref/netstandard2.0/System.Reflection.Emit.ILGeneration.dll",
-        "ref/netstandard2.0/System.Reflection.Emit.ILGeneration.xml",
-        "ref/netstandard2.1/_._",
-        "ref/portable-net45+wp8/_._",
-        "ref/wp80/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/aot/lib/netcore50/System.Reflection.Emit.ILGeneration.dll",
-        "runtimes/aot/lib/netcore50/System.Reflection.Emit.ILGeneration.xml",
-        "system.reflection.emit.ilgeneration.4.7.0.nupkg.sha512",
-        "system.reflection.emit.ilgeneration.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.16299": [
-      "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.9",
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid >= 6.0.0",
-      "System.Reflection.Emit >= 4.7.0"
+      "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.9"
     ]
   },
   "packageFolders": {
@@ -8577,14 +8190,6 @@
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",
             "version": "[6.2.9, )"
-          },
-          "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid": {
-            "target": "Package",
-            "version": "[6.0.0, )"
-          },
-          "System.Reflection.Emit": {
-            "target": "Package",
-            "version": "[4.7.0, )"
           }
         },
         "imports": [

@@ -13,7 +13,7 @@
     <Pivot x:Name="rootPivot" Title="SEO toolkit">
         <PivotItem x:Name="keywordPivot" Header="Keyword Analysis" BorderBrush="Black">
             <ScrollViewer>
-                <Grid>
+                <Grid x:Name="mainGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
@@ -67,7 +67,7 @@
                 </Grid>
             </ScrollViewer>
         </PivotItem>
-        <PivotItem Header="Meta Tags Analysis">
+        <PivotItem Header="Meta Analysis">
             <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="26*" />
@@ -81,24 +81,44 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="1" Grid.Column="3" Text="Coming soon..." FontSize="36"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="Coming soon..." FontSize="30"/>
             </Grid>
         </PivotItem>
-        <PivotItem Header="Keyword Search">
+        <PivotItem Header="About">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="26*" />
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="255*"/>
-                    <ColumnDefinition Width="316*" />
-                    <ColumnDefinition Width="316*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="160" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="1" Grid.Column="3" Text="Coming soon..." FontSize="36"/>
+                <Grid  Grid.Row="0" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="280" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                        <TextBlock Margin="0,40,0,0" Text="Khukri" FontSize="72" FontWeight="SemiBold" />
+                        <TextBlock Margin="10,100,0,0" Text="v1.1.0" FontSize="16" />
+                    </StackPanel>
+                </Grid>
+                <TextBlock Grid.Row="1" Grid.Column="0" Margin="20,20,20,0" TextWrapping="Wrap">
+                    Khukri is a Search Engine Optimisation Tool commissioned and architected by <Hyperlink NavigateUri="https://www.linkedin.com/in/heti-damani/">Heti</Hyperlink>, drawing from her experience in this field
+                    and built by <Hyperlink NavigateUri="https://github.com/PiyushMichael">Piyush</Hyperlink>. It is a work in progress and will hopefully have a bigger feature set.
+                </TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="0" Margin="20,20,20,0" TextWrapping="Wrap">
+                    You can extract keywords CSV from <Hyperlink NavigateUri="https://ads.google.com/intl/en_in/home/tools/keyword-planner/">Google Keywords Planner</Hyperlink>.
+                    But before going off clicking buttons haphazardly <Hyperlink NavigateUri="https://ahrefs.com/blog/google-keyword-planner/">read this guide</Hyperlink> to learn how to access
+                    it for free. After you download the keywords spreadsheet, save it as a separate MS-DOS compatible CSV file - which will show in the "Save as Format" options.
+                </TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="0" Margin="20,20,20,0" TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://www.thehoth.com/google-keyword-planner/">Hoth</Hyperlink> is another free keywords analysis system which we hope to integrate into this tool in the future.
+                </TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,20,40" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom">©There is no copyright</TextBlock>
             </Grid>
         </PivotItem>
     </Pivot>

@@ -40,14 +40,6 @@
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
               "version": "[6.2.9, )"
-            },
-            "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
-            "System.Reflection.Emit": {
-              "target": "Package",
-              "version": "[4.7.0, )"
             }
           },
           "imports": [
