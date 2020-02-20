@@ -203,15 +203,6 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        }
-      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -551,15 +542,6 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
-        }
-      },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -1067,15 +1049,6 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
-        }
-      },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -1586,15 +1559,6 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        }
-      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -2103,15 +2067,6 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        }
-      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -2617,15 +2572,6 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
-        }
-      },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -3136,15 +3082,6 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        }
-      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -3650,15 +3587,6 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
-        }
-      },
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -4347,27 +4275,6 @@
         "ref/uap10.0.15138/mscorlib.dll",
         "ref/uap10.0.15138/netstandard.dll",
         "runtime.json"
-      ]
-    },
-    "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/6.0.0": {
-      "sha512": "4rQ928QrHtNAM2+k55md15MfbZJOnHzVVBcPSQUhEZ0KU0WEImPiIbrnh7lRXKkI5ZwmXZZJiJrEUoW5kAgAUQ==",
-      "type": "package",
-      "path": "microsoft.toolkit.uwp.ui.controls.datagrid/6.0.0",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/uap10.0.16299/Design/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.Design.dll",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.pdb",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.pri",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.xml",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/DataGrid/DataGrid.xaml",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.xr.xml",
-        "lib/uap10.0.16299/Microsoft.Toolkit.Uwp.UI.Controls.DataGrid/Themes/Generic.xaml",
-        "microsoft.toolkit.uwp.ui.controls.datagrid.6.0.0.nupkg.sha512",
-        "microsoft.toolkit.uwp.ui.controls.datagrid.nuspec",
-        "tools/VisualStudioToolsManifest.xml"
       ]
     },
     "NETStandard.Library/2.0.3": {
@@ -8533,7 +8440,6 @@
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.16299": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.9",
-      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid >= 6.0.0",
       "System.Reflection.Emit >= 4.7.0"
     ]
   },
@@ -8577,10 +8483,6 @@
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",
             "version": "[6.2.9, )"
-          },
-          "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid": {
-            "target": "Package",
-            "version": "[6.0.0, )"
           },
           "System.Reflection.Emit": {
             "target": "Package",

@@ -1,22 +1,10 @@
-﻿using Microsoft.Toolkit.Uwp.UI.Controls;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Dynamic;
-using System.IO;
 using System.Linq;
-using System.Reflection.Emit;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
@@ -141,9 +129,10 @@ namespace Khukri
                     if (articleIndex == 0)
                     {
                         text.Width = 90;
-                        if (entry <= searchMatrix[i].Min || entry >= searchMatrix[i].Avg)
+                        if (entry < searchMatrix[i].Min || entry > searchMatrix[i].Avg)
                         {
                             text.Foreground = new SolidColorBrush(Colors.Red);
+                            text.Text += "  <--";
                         }
                     } else
                     {

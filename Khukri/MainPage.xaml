@@ -118,7 +118,7 @@
                 <TextBlock Grid.Row="3" Grid.Column="0" Margin="20,20,20,0" TextWrapping="Wrap">
                     <Hyperlink NavigateUri="https://www.thehoth.com/google-keyword-planner/">Hoth</Hyperlink> is another free keywords analysis tool which we hope to integrate into this tool in the future.
                 </TextBlock>
-                <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,40,40" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom">©There is no copyright</TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,20,40" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom">©There is no copyright</TextBlock>
             </Grid>
         </PivotItem>
     </Pivot>
